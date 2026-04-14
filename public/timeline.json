@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "type": "Meetup",
+    "person": "Tom Baker",
+    "date": "March 28, 2026",
+    "icon_type": "meet"
+  },
+  {
+    "id": 2,
+    "type": "Text",
+    "person": "Sarah Chen",
+    "date": "March 25, 2026",
+    "icon_type": "text"
+  },
+  {
+    "id": 3,
+    "type": "Meetup",
+    "person": "Olivia Martinez",
+    "date": "March 24, 2026",
+    "icon_type": "meet"
+  },
+  {
+    "id": 4,
+    "type": "Video",
+    "person": "Alisha Patel",
+    "date": "March 23, 2026",
+    "icon_type": "video"
+  },
+  {
+    "id": 5,
+    "type": "Meetup",
+    "person": "Sarah Chen",
+    "date": "March 21, 2026",
+    "icon_type": "meet"
+  },
+  {
+    "id": 6,
+    "type": "Call",
+    "person": "Marcus Johnson",
+    "date": "March 19, 2026",
+    "icon_type": "call"
+  }
+]
