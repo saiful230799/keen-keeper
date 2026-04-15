@@ -13,7 +13,6 @@ const HomeBanner = () => {
         <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight lg:max-w-5xl xl:max-w-full mx-auto">
         Friends to keep close in your life
         </h1>
-        
         <p className="text-[#64748B] text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed opacity-90">
           Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.
         </p>
@@ -26,7 +25,6 @@ const HomeBanner = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-0 relative z-10">
         {statCards.map((card, index) => (
           <div key={index} className="bg-white p-8 rounded-2xl flex flex-col items-center justify-center shadow-md transform hover:scale-105 transition-transform">
-
             <h3 className="text-5xl font-extrabold text-[#1A302B] mb-3">
               {card.value}
             </h3>

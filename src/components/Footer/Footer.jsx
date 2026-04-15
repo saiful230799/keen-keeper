@@ -1,13 +1,9 @@
-import { useLocation } from "react-router";
 import { FaInstagram, FaSquareFacebook, FaXTwitter } from "react-icons/fa6";
-import FooterSubNav from "../FooterSubNav/FooterSubNav";
 
 const Footer = () => {
-  const location = useLocation();
-
+  
   return (
     <footer className="mt-auto">
-      {location.pathname === "/" && <FooterSubNav />}
       <div className="bg-[#244D3F] text-white py-12 px-4 md:px-12">
         <div className="container mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold mb-4">KeenKeeper</h2>
@@ -30,6 +26,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
+
           <div className="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-evenly items-center text-sm text-gray-400 gap-4">
             <p>© 2026 KeenKeeper. All rights reserved.</p>
             <div className="flex gap-6">

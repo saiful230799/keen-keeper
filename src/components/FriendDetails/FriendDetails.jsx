@@ -1,23 +1,20 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams, useOutletContext } from "react-router";
 import { useEffect, useState } from "react";
-import { 
-  FaPhoneAlt, 
-  FaVideo, 
-  FaRegEdit, 
-  FaTrashAlt, 
-  FaArchive 
-} from "react-icons/fa";
+import { FaPhoneAlt, FaVideo, FaRegEdit, FaTrashAlt, FaArchive } from "react-icons/fa";
 import { IoChatbubbleEllipsesSharp, IoNotificationsOffOutline } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const FriendDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { setActivities } = useOutletContext();
   const [friend, setFriend] = useState(null);
 
   useEffect(() => {
     fetch("/friends.json")
       .then((res) => res.json())
       .then((data) => {
-        const found = data.find(f => f.id === parseInt(id));
+        const found = data.find((f) => f.id === parseInt(id));
         setFriend(found);
       });
   }, [id]);
@@ -28,6 +25,8 @@ const FriendDetails = () => {
   const newEntry = {
     id: Date.now(),
     type: type, 
+    icon_type: type.toLowerCase(), 
+    person: friend.name,
     title: `${type} with ${friend.name}`, 
     date: new Date().toLocaleDateString('en-US', {
       weekday: 'short',
@@ -37,17 +36,16 @@ const FriendDetails = () => {
     }),
   };
 
-  if (setTimelineData) {
-    setTimelineData((prev) => [newEntry, ...prev]);
-  }
+  setActivities((prev) => [newEntry, ...prev]);
+  
+  toast.success(`${type} with ${friend.name}`);
 
-  toast.success(`${type} with ${friend.name} recorded!`);
 };
 
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        
+
         <div className="md:col-span-4 space-y-4">
           <div className="bg-white p-8 rounded-2xl shadow-sm text-center border border-gray-100">
             <img src={friend.image} className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-50" />
@@ -61,18 +59,17 @@ const FriendDetails = () => {
           </div>
 
           <div className="space-y-2">
-            <button className="w-full py-3 bg-white rounded-xl shadow flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
-              <IoNotificationsOffOutline size={18}/> Snooze 2 Weeks
+            <button className="w-full py-3 bg-white rounded-xl shadow flex items-center justify-center gap-2 hover:bg-gray-50">
+              <IoNotificationsOffOutline size={18} /> Snooze 2 Weeks
             </button>
-            <button className="w-full py-3 bg-white rounded-xl shadow flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
-              <FaArchive size={16}/> Archive
+            <button className="w-full py-3 bg-white rounded-xl shadow flex items-center justify-center gap-2 hover:bg-gray-50">
+              <FaArchive size={16} /> Archive
             </button>
-            <button className="w-full py-3 bg-white rounded-xl shadow text-red-500 flex items-center justify-center gap-2 hover:bg-red-50 transition-colors">
-              <FaTrashAlt size={16}/> Delete
+            <button className="w-full py-3 bg-white rounded-xl shadow text-red-500 flex items-center justify-center gap-2 hover:bg-red-50">
+              <FaTrashAlt size={16} /> Delete
             </button>
           </div>
         </div>
-
         <div className="md:col-span-8 space-y-6">
           <div className="grid grid-cols-3 gap-4">
             <div className="bg-white p-6 rounded-2xl shadow-sm text-center border border-gray-100">
@@ -95,26 +92,29 @@ const FriendDetails = () => {
               <p className="text-gray-500 mt-1">Connect every <span className="font-bold text-black">{friend.goal_days} days</span></p>
             </div>
             <button className="btn btn-ghost btn-sm border bg-gray-50 flex gap-2">
-              <FaRegEdit size={14}/> Edit
+              <FaRegEdit size={14} /> Edit
             </button>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-800 mb-6">Quick Check-In</h3>
+
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h3 className="text-lg font-bold text-gray-800 mb-4">Quick Check-In</h3>
             <div className="grid grid-cols-3 gap-4">
-              <button className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-                <FaPhoneAlt size={22}/> <span onClick={()=> handleCheckIn (friend)} className="text-sm font-medium">Call</span>
+              <button onClick={() => handleCheckIn("Call")} className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors cursor-pointer">
+                <FaPhoneAlt size={22} className="text-gray-600" />
+                <span className="text-sm font-medium">Call</span>
               </button>
-              <button className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-                <IoChatbubbleEllipsesSharp size={24}/> <span className="text-sm font-medium">Text</span>
+              <button onClick={() => handleCheckIn("Text")} className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors cursor-pointer">
+                <IoChatbubbleEllipsesSharp size={24} className="text-gray-600" />
+                <span className="text-sm font-medium">Text</span>
               </button>
-              <button className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-                <FaVideo size={22}/> <span className="text-sm font-medium">Video</span>
+              <button onClick={() => handleCheckIn("Video")} className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors cursor-pointer">
+                <FaVideo size={22} className="text-gray-600" />
+                <span className="text-sm font-medium">Video</span>
               </button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

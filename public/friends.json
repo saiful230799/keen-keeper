@@ -10,7 +10,8 @@
     "category": ["WORK"],
     "status": "Almost Due",
     "note": "A great mentor from my previous internship.",
-    "preferred": "LinkedIn"
+    "preferred": "Video",
+    "next_due_date": "2026-04-29"
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     "category": ["FAMILY"],
     "status": "Overdue",
     "note": "Cousin who loves hiking and nature.",
-    "preferred": "WhatsApp"
+    "preferred": "Text",
+    "next_due_date": "2026-06-17"
   },
   {
     "id": 3,
@@ -36,7 +38,8 @@
     "category": ["WORK"],
     "status": "Overdue",
     "note": "Project manager with a focus on UI/UX.",
-    "preferred": "Email"
+    "preferred": "Video",
+    "next_due_date": "2026-04-21"
   },
   {
     "id": 4,
@@ -49,7 +52,8 @@
     "category": ["HOBBY", "TRAVEL"],
     "status": "Overdue",
     "note": "Travel buddy from the last Bali trip.",
-    "preferred": "Text"
+    "preferred": "Call",
+    "next_due_date": "2026-05-26"
   },
   {
     "id": 5,
@@ -62,7 +66,8 @@
     "category": ["WORK"],
     "status": "Overdue",
     "note": "Senior dev at the local tech firm.",
-    "preferred": "Slack"
+    "preferred": "Call",
+    "next_due_date": "2026-03-29"
   },
   {
     "id": 6,
@@ -75,7 +80,8 @@
     "category": ["FAMILY"],
     "status": "On-Track",
     "note": "Sister who is studying Political Science.",
-    "preferred": "Video Call"
+    "preferred": "Text",
+    "next_due_date": "2025-11-20"
   },
   {
     "id": 7,
@@ -88,7 +94,8 @@
     "category": ["WORK"],
     "status": "On-Track",
     "note": "Marketing expert in digital growth.",
-    "preferred": "Call"
+    "preferred": "Call",
+    "next_due_date": "2025-07-20"
   },
   {
     "id": 8,
@@ -101,11 +108,12 @@
     "category": ["HOBBY", "TRAVEL"],
     "status": "Almost Due",
     "note": "Photography enthusiast.",
-    "preferred": "Instagram"
+    "preferred": "WhatsApp",
+    "next_due_date": "2026-04-20"
   },
   {
     "id": 9,
-    "name": "David Kim",
+    "name": "Ben Stock",
     "image": "https://i.pravatar.cc/150?u=9",
     "last_contact": "8d ago",
     "days_since_contact": 8,
@@ -114,7 +122,8 @@
     "category": ["WORK"],
     "status": "Almost Due",
     "note": "Met at a networking event in NYC.",
-    "preferred": "LinkedIn"
+    "preferred": "Call",
+    "next_due_date": "2026-01-13"
   },
   {
     "id": 10,
@@ -127,7 +136,8 @@
     "category": ["FAMILY"],
     "status": "Overdue",
     "note": "Always cheerful and helpful.",
-    "preferred": "WhatsApp"
+    "preferred": "Text",
+    "next_due_date": "2026-05-22"
   },
   {
     "id": 11,
@@ -140,7 +150,8 @@
     "category": ["WORK"],
     "status": "Overdue",
     "note": "Expert in front-end architecture.",
-    "preferred": "Email"
+    "preferred": "WhatsApp",
+    "next_due_date": "2026-02-09"
   },
   {
     "id": 12,
@@ -153,6 +164,7 @@
     "category": ["HOBBY", "TRAVEL"],
     "status": "On-Track",
     "note": "Planning a new trip to Japan.",
-    "preferred": "Text"
+    "preferred": "Text",
+    "next_due_date": "2026-05-20"
   }
 ]

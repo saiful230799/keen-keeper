@@ -64,7 +64,6 @@ const Navbar = () => {
           <span className="text-[#244D3F]">Keeper</span>
         </NavLink>
       </div>
-
       <div className="navbar-end hidden lg:flex">
         <ul className="flex items-center gap-4">
           {navLinks}
