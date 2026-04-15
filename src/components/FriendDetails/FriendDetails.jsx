@@ -24,6 +24,26 @@ const FriendDetails = () => {
 
   if (!friend) return <div className="text-center p-20 font-bold">Loading...</div>;
 
+  const handleCheckIn = (type) => {
+  const newEntry = {
+    id: Date.now(),
+    type: type, 
+    title: `${type} with ${friend.name}`, 
+    date: new Date().toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+  };
+
+  if (setTimelineData) {
+    setTimelineData((prev) => [newEntry, ...prev]);
+  }
+
+  toast.success(`${type} with ${friend.name} recorded!`);
+};
+
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -83,7 +103,7 @@ const FriendDetails = () => {
             <h3 className="text-lg font-bold text-gray-800 mb-6">Quick Check-In</h3>
             <div className="grid grid-cols-3 gap-4">
               <button className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-                <FaPhoneAlt size={22}/> <span className="text-sm font-medium">Call</span>
+                <FaPhoneAlt size={22}/> <span onClick={()=> handleCheckIn (friend)} className="text-sm font-medium">Call</span>
               </button>
               <button className="flex flex-col items-center gap-3 p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
                 <IoChatbubbleEllipsesSharp size={24}/> <span className="text-sm font-medium">Text</span>
