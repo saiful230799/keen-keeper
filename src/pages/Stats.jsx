@@ -5,14 +5,24 @@ const Stats = () => {
   const { activities = [] } = useOutletContext() || {};
 
   const dynamicData = [
-    { name: 'Text', value: activities.filter(a => a.type === 'Text').length },
-    { name: 'Call', value: activities.filter(a => a.type === 'Call').length },
-    { name: 'Video', value: activities.filter(a => a.type === 'Video').length },
+    { 
+      name: 'Call', 
+      count: activities.filter(a => a.type?.toLowerCase() === 'call').length,
+      value: 1
+    },
+    { 
+      name: 'Text', 
+      count: activities.filter(a => a.type?.toLowerCase() === 'text').length,
+      value: 1 
+    },
+    { 
+      name: 'Video', 
+      count: activities.filter(a => a.type?.toLowerCase() === 'video').length,
+      value: 1 
+    },
   ];
 
-  const hasData = dynamicData.some(item => item.value > 0);
-
-  const COLORS = ['#244D3F', '#0369A1', '#34D399'];
+  const COLORS = ['#244D3F', '#7f36f5', '#35a165'];
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-4xl min-h-[70vh]">
@@ -20,7 +30,6 @@ const Stats = () => {
       <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
         <h3 className="text-gray-500 font-medium mb-4">By Interaction Type</h3>       
         <div className="h-[350px] w-full">
-          {hasData ? (
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -29,7 +38,7 @@ const Stats = () => {
                   cy="50%"
                   innerRadius={70}
                   outerRadius={100}
-                  paddingAngle={8}
+                  paddingAngle={5}
                   dataKey="value"
                   stroke="none"
                 >
@@ -37,22 +46,13 @@ const Stats = () => {
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
-                
                 <Tooltip 
-                  contentStyle={{ 
-                    borderRadius: '12px', 
-                    border: 'none', 
-                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' 
-                  }}
+                  formatter={(value, name, props) => [`Count: ${props.payload.count}`, name]}
+                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
                 />
                 <Legend verticalAlign="bottom" height={36} iconType="circle" />
               </PieChart>
             </ResponsiveContainer>
-          ) : (
-            <div className="flex items-center justify-center h-full text-gray-400 italic">
-              No interactions recorded yet. Click Call/Text/Video to see stats!
-            </div>
-          )}
         </div>
       </div>
     </div>

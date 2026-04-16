@@ -53,7 +53,7 @@ const Timeline = () => {
       
       <div className="mb-6">
         <select
-          className="select select-bordered w-full max-w-xs bg-white text-sm"
+          className="select w-full max-w-xs bg-white text-sm"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         >
