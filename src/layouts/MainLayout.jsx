@@ -10,12 +10,12 @@ const MainLayout = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar/>
+      <Navbar />
       <main className="flex-grow">
-  <Outlet context={{ activities, setActivities }} /> 
-</main>
+        <Outlet context={{ activities, setActivities }} /> 
+      </main>
       <Footer />
-      <ToastContainer position="top-right" autoClose={2000} />
+      <ToastContainer position="top-center" autoClose={2000} />
     </div>
   );
 };
